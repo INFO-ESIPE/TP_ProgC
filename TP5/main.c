@@ -67,9 +67,7 @@ void fill_array_with_random_values(int* array, int min, int max)
 	int i;
 	int n = array_size(array);
 
-
-	for(i = 0; i<n; i++ ) 
-		array[i] = (rand() % (max - min)) + min;
+	for(i = 0; i<n; i++ ) array[i] = (rand() % (max - min)) + min;
 	
 }
 
@@ -82,8 +80,7 @@ int* copy_array(int* array)
 	int* copiedArray = allocate_integer_array(arraySize);
 	int i;
 
-	for(i = 0; i<arraySize; i++)
-		copiedArray[i] = array[i];
+	for(i = 0; i<arraySize; i++) copiedArray[i] = array[i];
 
 	return copiedArray;
 }
@@ -100,7 +97,6 @@ int are_arrays_equal(int* first, int* second)
 	for(i = 0; i < firstSize; i++)
 		if(first[i] != second[i])
 			return ARRAYS_NOT_EQUALS;
-
 
 	return ARRAYS_EQUALS;
 
@@ -123,7 +119,6 @@ int* fill_array()
 		exit(1);
 	}
 
-
 	array = allocate_integer_array(arraySize);
 
 	printf("Entrez %d entiers positifs : ", arraySize);
@@ -133,7 +128,6 @@ int* fill_array()
 		    fprintf(stderr, "Error reading array elements\n");
 			exit(1);
 		}
-
 
 	return array;
 
@@ -149,7 +143,6 @@ int* random_array(int size, int max_entry)
 	{
 		array[i] = (rand() % max_entry);
 	}
-
 
 	return array;
 }
@@ -175,6 +168,7 @@ int* concat_array(int* first, int* second)
 	return array;
 }
 
+/* Fonction retournant un tableau trié à partir de 2 tableaux déjà triés*/
 int* merge_sorted_arrays(int* first, int* second)
 {
 	int firstSize = array_size(first);
@@ -216,7 +210,6 @@ la moitié des éléments du tableau array en argument.
 void split_arrays(int* array, int** first, int** second)
 {
 
-
 	int arraySize = array_size(array);
 	int i = 0;
 	int j;
@@ -225,8 +218,6 @@ void split_arrays(int* array, int** first, int** second)
 	int sizeSecond = arraySize-sizeFirst;
 	*first = allocate_integer_array(sizeFirst);
 	*second = allocate_integer_array(sizeSecond);
-
-
 
 	for(j = 0; j < array_size(*first); j++, i++)
 		(*first)[j] = array[i];
@@ -252,11 +243,9 @@ int* merge_sort(int* array)
 
  	if(array_size(array) == 1) return array;
 
-
  	split_arrays(array, &split1, &split2);
 
  	split1 = merge_sort(split1);
-
  	split2 = merge_sort(split2);
 
  	sorted_array = merge_sorted_arrays(split1, split2);
@@ -397,13 +386,6 @@ void test_functions_ex3()
 	free(array_split_2);
 	free(array_merge_sorted);
 	free(array_to_merge_sort);
-
-
-
-
-
-
-
 }
 
 /* An empty main to test the compilation of the allocation and free
@@ -413,11 +395,11 @@ int main(int argc, char* argv[]){
 
 
 	/* Permet de tester les fonctions de l'exercice 1*/
-	/*test_functions_ex1();*/
+	test_functions_ex1();
  
 
 	/* Permet de tester les fonctions de l'exercice 2*/
-	/*test_functions_ex2();*/
+	test_functions_ex2();
 
 
 	/* Permet de tester les fonctions de l'exercice 3*/
