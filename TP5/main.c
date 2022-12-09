@@ -1,3 +1,8 @@
+/*
+	Programme de gestion d'un tableau d'entier (TP5)
+	Max Ducoudré - INFO1
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
