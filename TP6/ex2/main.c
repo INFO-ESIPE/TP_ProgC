@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 /* nombre des entiers naturels à afficher les permutations*/
-#define N 3
+#define N 20
 
 /*Signature des fonctions */
 void permutations(int* array, int current, int max);
@@ -18,7 +18,7 @@ int recursive_depth = 0;
 
 int main(int argc, char* argv[])
 {
-	int* array = calloc(N, sizeof(int)); /*Alloue la mémoire nécéssaire et met à °*/
+	int* array = calloc(N, sizeof(int)); /*Alloue la mémoire nécéssaire et met à 0 les éléments du tableau*/
 	permutations(array, 0, N+1);
 	free(array);
 
