@@ -14,7 +14,7 @@
 void test_cache();
 
 /*Fonction pour réserver la mémoire du cache*/
-unsigned long int* init_cache();
+int* init_cache();
 
 #endif
 

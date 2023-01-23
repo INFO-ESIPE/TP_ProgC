@@ -9,38 +9,36 @@
 
 void test_cache()
 {
-    unsigned long int *cache = init_cache();
-    unsigned long int search;
+    int *cache = init_cache();
 
-    search = fly_lenght_recursive(27, cache);
-    printf("result for [27] : %lu\n", search);
+    unsigned long int max_index = 0;
+    int max = 0;
 
-    search = fly_lenght_recursive(27, cache);
-    printf("result for [27] : %lu\n", search);
+    int value = 0;
+    unsigned long int n;
 
-    search = fly_lenght_recursive(28, cache);
-    printf("result for [28] : %lu\n", search);
+    for(n = 1; n < CACHE_SIZE; n++)
+    {
+        /*printf("syracuse(%ld)\n", n);*/
+        value = syracuse_rec(n, cache);
+        if(max < value)
+        {
+            max = value;
+            n = max_index;
+        }
+    }
+    printf("La longueur de vol maximale est %d pour la valeur %ld.\n", max, max_index);
 
-    search = fly_lenght_recursive(26, cache);
-    printf("result for [26] : %lu\n", search);
-
-    search = fly_lenght_recursive(50, cache);
-    printf("result for [50] : %lu\n", search);
-
-    search = fly_lenght_recursive(1000, cache);
-    printf("result for [1000] : %lu\n", search);
-
-    search = fly_lenght_recursive(199999999, cache);
-    printf("result for [199999999] : %lu\n", search);
 
     printf("Free cache for memory\n");
     free(cache);
 }
 
 
-unsigned long int* init_cache()
+int* init_cache()
 {
-    unsigned long int* cache = calloc(CACHE_SIZE, sizeof(unsigned long int));
+
+    int* cache = calloc(CACHE_SIZE, sizeof(int));
     printf("Cache initialisation\n");
 
     return cache;

@@ -32,7 +32,7 @@ void test_syracuse_iterative(unsigned long int an);
 /*Permet d'afficher à la console les données de l'argument syracuse_data*/
 void print_syracuse_data(struct SyracuseData syracuse_data);
 
-
+unsigned long int syracuse_rec(unsigned long int n, int* cache);
 
 /*PARTIE 2*/
 /*Permet de récupérer le nombre d'étapes pour la valeur search_an dans la suite de syracuse récursivement

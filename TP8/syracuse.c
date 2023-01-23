@@ -29,26 +29,31 @@ unsigned long int fly_lenght(unsigned long int an)
     return fly_lenght;
 }
 
-int fly_lenght_recursive(unsigned long int search_an, unsigned long int *cache)
+
+unsigned long int syracuse_rec(unsigned long int n, int* cache)
 {
-    unsigned long int syracuse_next;
+  int an;
+  if (n == 1) {
+    return 0;
+  }
+  else if (n <= CACHE_SIZE && cache[n] != 0)
+  {
+    return cache[n];
+  }
+  else
+  {
+    if (n % 2 == 0) {n = n / 2;}
+    else {n = 3 * n + 1;}
 
-    if(search_an < CACHE_SIZE && cache[search_an] != 0)
-    {
-        return cache[search_an];
-    } 
-    else if(search_an > CACHE_SIZE)
-    {
-        return fly_lenght(search_an);
-    } 
-    else
-    {
-        syracuse_next = fly_lenght(search_an);
-
-        cache[search_an] = syracuse_next; 
-        printf("Mise à jour cache[%lu] = %lu\n", search_an, syracuse_next);
-        return fly_lenght_recursive(search_an, cache);
+    an = syracuse_rec(n, cache);
+    
+    if (n < CACHE_SIZE && cache[n] == 0) {
+      cache[n] = an;
+      /*printf("Mise à jour du cache[%ld] = %d\n", n, cache[n]);*/
     }
+  }
+    return an + 1;
+
 }
 
 struct SyracuseData syracuse_iterative(unsigned long int an)
@@ -58,7 +63,7 @@ struct SyracuseData syracuse_iterative(unsigned long int an)
     sd.result_array[0] = an;
     sd.maximum_value = an;
     sd.fly_lenght = 0;
-    
+
     for(sd.fly_lenght = 1; an != 1; sd.fly_lenght++)
     {
         an = next_element(an);

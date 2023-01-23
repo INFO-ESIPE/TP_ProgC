@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
         test_syracuse_iterative(n);
         return EXIT_SUCCESS;
 
-    } else if(argc == 3 && strcmp(argv[1], "--test_cache") == 0)
+    } else if(argc == 2 && strcmp(argv[1], "--test_cache") == 0)
     {
         test_cache();
         return EXIT_SUCCESS;
