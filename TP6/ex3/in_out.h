@@ -6,3 +6,5 @@
 int fread_board(const char* file, Board board);
 
 #endif
+
+ACTION_EMPTY
