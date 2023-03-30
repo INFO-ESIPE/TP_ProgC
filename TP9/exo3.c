@@ -4,46 +4,41 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "exo3.h"
 
-void run_exo3(int argc, char* argv[])
-{
-    char** arguments = allocate_empty_strings(argc, argv);
-    fill_strings(arguments, argc, argv);
+void run_exo3(int argc, char* argv[]) {
+    char** arguments = clone_argv(argc, argv);
+
     printf("--Exercice 3-- \nMalloc array of %d strings : \n", argc);
-    print_strings(arguments, argc);
-    free_strings(arguments, argc);
+    print_argv(arguments, argc);
+
+    free_argv(arguments, argc);
 }
 
-char** allocate_empty_strings(size_t argc, char* argv[])
-{
-    int i,j;
-    char** arguments_array = malloc(sizeof(char*)*argc);
-    for(i = 0; i < argc; i++)
-    {
-        for(j = 0; argv[i][j] != '\0'; j++) {}
-        arguments_array[i] = malloc(sizeof(char)*j);
+char** clone_argv(size_t argc, char* argv[]) {
+    int i;
+    char** new_argv = malloc(sizeof(char*) * argc);
+
+    for(i = 0; i < argc; i++) {
+        new_argv[i] = malloc(sizeof(char) * (strlen(argv[i]) + 1));
+        strcpy(new_argv[i], argv[i]);
     }
-    return arguments_array;
+
+    return new_argv;
 }
 
-void fill_strings(char** malloc_array, size_t argc, char* argv[])
-{
-    int i,j;
-    for(i = 0; i < argc; i++)
-        for(j = 0; argv[i][j] != '\0'; j++) malloc_array[i][j] = argv[i][j];
-}
-
-void print_strings(char** malloc_array, size_t argc)
-{
+void print_argv(char** arguments, size_t argc) {
     int i;
-    for(i = 0; i < argc; i++)
-        printf("argv[%d] : %s\n", i, malloc_array[i]);
+    for(i = 0; i < argc; i++) {
+        printf("argv[%d] : %s\n", i, arguments[i]);
+    }
 }
 
-void free_strings(char** malloc_array, size_t argc)
-{
+void free_argv(char** arguments, size_t argc) {
     int i;
-    for(i = 0; i < argc; i++) free(malloc_array[i]);
-    free(malloc_array);
+    for(i = 0; i < argc; i++) {
+        free(arguments[i]);
+    }
+    free(arguments);
 }

@@ -1,0 +1,1 @@
+void swap_mem(void* z1, void* z2, size_t size);

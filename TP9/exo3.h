@@ -8,17 +8,14 @@
 /*Fonction permettant de lancer l'exercice 3*/
 void run_exo3(int argc, char* argv[]);
 
-/*Fonction allouant l'espace mémoire nécéssaires pour stocker les arguments du programme*/
-char** allocate_empty_strings(size_t argc, char* argv[]);
-
 /*Permet de remplir le malloc avec les caractères stockés dans argv*/
-void fill_strings(char** malloc_array, size_t argc, char* argv[]);
+char** clone_argv(size_t argc, char* argv[]);
 
 /*Permet d'afficher le contenu du malloc contenant des chaînes de caractères*/
-void print_strings(char** malloc_array, size_t argc);
+void print_argv(char** arguments, size_t argc);
+
 
 /*Permet de libérer l'espace mémoire alloué*/
-void free_strings(char** malloc_array, size_t argc);
-
+void free_argv(char** arguments, size_t argc);
 
 #endif

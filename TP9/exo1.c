@@ -18,7 +18,7 @@ void run_exo1(size_t malloc_size)
     free_malloc_int(malloc_array); 
 }
 
-/*Fonction pour libérer l'espace mémoir alloué par le malloc*/
+/*Fonction pour libérer l'espace mémoire alloué par le malloc*/
 void free_malloc_int(int* malloc)
 {
     free(malloc);
