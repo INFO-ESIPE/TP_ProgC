@@ -14,16 +14,15 @@ void test_exo2();
 
 int main(int argc, char* argv[]) {
 
-    /*test_exo1();*/
+    test_exo1();
 
     test_exo2();
 
     return EXIT_SUCCESS;
 }
 
-
+/* Test for EXO1*/
 void test_exo1() {
-    /* Test mem swap EXO 1*/
     int int_1 = 1;
     int int_2 = 2;
     char* str_1 = "Hello";
@@ -36,44 +35,33 @@ void test_exo1() {
     printf("int_1 : %d | int_2 %d\n", int_1, int_2);
 }
 
-
+/*Test for EXO2*/
 void test_exo2() {
     FILE* file = fopen("liste_nom.txt", "r");
     char first[100];
     char last[100];
     int age;
-    /*Cell* cell;*/
-    List list;
+    List list = NULL;
     
     if(file == NULL) {
         printf("Erreur d'ouverture de fichier\n");
         return;
     }
 
-    /* Normal insertion*/
-    /*cell = malloc(sizeof(Cell*));
-    list = cell;
-    while(fscanf(file, "%s %s %d", first, last, &age) == 3) {
-        cell->next = allocate_cell(first, last, age);
-        cell = cell->next;
-    }
-    cell->next = NULL;
-    print_list(list);
-    free_list(list);
-    fclose(file);*/
-
-
-    /* Age ordered insertion*/
     file = fopen("liste_nom.txt", "r");
-    list = NULL;
     while(fscanf(file, "%s %s %d", first, last, &age) == 3) {
+        /* Age ordered insertion*/
         ordered_insertion(&list, allocate_cell(first, last, age), age_order);
+
+        /* Name ordered insertion*/
+        /*ordered_insertion(&list, allocate_cell(first, last, age), name_order);*/
     }
     print_list(list);
     free_list(list);
 
 
-    /*fclose(file);*/
+
+
 
     
 

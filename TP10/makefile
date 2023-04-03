@@ -18,4 +18,7 @@ name_list.o: name_list.c
 clean: 
 	rm -f *.o
 	rm -f *~
-	rm -f allocation
+	rm -f exe
+
+run:
+	./exe

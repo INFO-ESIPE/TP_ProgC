@@ -27,41 +27,30 @@ int age_order(Cell* p1, Cell* p2) {
 }
 
 int name_order(Cell* p1, Cell* p2) {
-    return 0;
+    int cmp = strcmp(p1->last_name, p2->last_name);
+    if(cmp == 0) {
+        cmp = strcmp(p1->first_name, p2->first_name);
+    }
+    return cmp;
 }
 
 
 void ordered_insertion(List* l, Cell* new, int order_func(Cell*, Cell*)) {
     Cell *cell = *l;
-    printf("NEW INSERT\n");
+    Cell *prev = NULL;
 
-    /* If the list is empty*/
-    if(*l == NULL) {
-        new->next = NULL;
-        *l = new;
-        printf("ADD START OF LIST\n");
-
-        return;
-    }
-    
-
-    while(cell != NULL) {
-
-        if(order_func(new, cell) != -1) {
-            new->next = cell->next;
-            cell->next = new;
-            printf("ADD IN LIST\n");
-            return;
-        }
+    while(cell != NULL && order_func(cell, new) < 0) {
+        prev = cell;
         cell = cell->next;
     }
 
-    /* Add at the end of the list*/
-    new->next = NULL;
-    cell = new;
-    printf("ADD END OF LIST\n");
-
-
+    if(prev == NULL) {
+        new->next = *l;
+        *l = new;
+    } else {
+        new->next = prev->next;
+        prev->next = new;
+    }
 }
 
 void print_list(List l) {
