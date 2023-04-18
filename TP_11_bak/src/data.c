@@ -1,10 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-
 #include "../include/data.h"
-
-
 
 PlayerData initPlayerData(int level_num) {
     PlayerData player_data;
@@ -88,11 +85,11 @@ void sortByTime(Score* score_list) {
 
 char* scoreToString(int level_num) {
     char* score_str = malloc(2500);
-    score_str[0] = '\0';	
     char line[25];
     int seconds, minutes;
     Score* score = getLevelScores(level_num);   
     Score *current_score = score;
+    score_str[0] = '\0';	
 
     /*sortByTime(score);*/
     

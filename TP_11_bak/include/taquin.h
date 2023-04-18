@@ -1,7 +1,3 @@
-/*
-	Programmation C - TP11
-	Max Ducoudré - INFO1
-*/
 #ifndef TAQUIN_H
 #define TAQUIN_H
 #include <MLV/MLV_all.h>
