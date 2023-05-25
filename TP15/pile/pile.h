@@ -1,15 +1,14 @@
 #ifndef PILE_H
 #define PILE_H
 
-typedef struct {
-    char** element;
-    char* head;
-    int size;
-} Pile;
 
-void push(Pile* pile, char* element);
-char* pop(Pile* pile);
-void print(Pile* pile);
+void push_stack(int element);
+int pop_stack();
+void print_stack();
+int size_stack();
+void empty_stack();
+void reverse_head_stack();
+int head_stack();
 
 
 #endif
